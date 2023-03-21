@@ -10,4 +10,5 @@ npx hardhat test
 REPORT_GAS=true npx hardhat test
 npx hardhat node
 npx hardhat run scripts/deploy_erc721.js --network test
+npx hardhat run scripts/verify_erc721a.js --network test
 ```

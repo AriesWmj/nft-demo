@@ -9,14 +9,11 @@ const {save_to_json, getProperties} = require("../util/out");
 
 async function main() {
   const [owner] = await hre.ethers.getSigners();
-
-  const Erc721a = await hre.ethers.getContractFactory("ERC721ADemo");
-  const erc721a = await Erc721a.deploy("ERC721A-TEST","ERC721AT");
-
-  await erc721a.deployed();
-
-  console.log("deploy erc721a contract with address ", erc721a.address);
-  save_to_json("erc721a", erc721a.address);
+  await hre.run('verify:verify', {
+    contract:"contracts/ERC1155Demo.sol:ERC1155Demo",
+    address: getProperties("erc1155"),
+    constructorArguments: ["http://testcase/"],
+  });
 }
 
 // We recommend this pattern to be able to use async/await everywhere
